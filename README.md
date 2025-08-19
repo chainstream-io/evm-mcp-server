@@ -208,6 +208,12 @@ bun start:http
 
 # Development mode with auto-reload
 bun dev:http
+
+# Start the optimized MCP HTTP server
+bun start:mcp
+
+# Development mode with auto-reload for MCP server
+bun dev:mcp
 ```
 
 ### Connecting to the Server
@@ -287,6 +293,39 @@ To use this configuration:
 2. Save the above JSON as `mcp.json` in the `.cursor` directory
 3. Restart Cursor or open your project
 4. Cursor will detect the configuration and offer to enable the server(s)
+
+### Example: Optimized MCP HTTP Server
+
+For better performance and BigInt support, use the optimized MCP HTTP server:
+
+```json
+{
+  "mcpServers": {
+    "evm-mcp-optimized": {
+      "url": "http://localhost:3001/mcp"
+    }
+  }
+}
+```
+
+**Features of the optimized MCP server:**
+- ✅ **BigInt Support**: Properly handles blockchain BigInt values
+- ✅ **Environment Variables**: Configurable via `PORT` and `HOST` env vars
+- ✅ **Better Error Handling**: Improved error messages and logging
+- ✅ **Graceful Shutdown**: Proper cleanup on server termination
+- ✅ **Unified Serialization**: Consistent BigInt handling across all tools
+
+**Usage:**
+```bash
+# Start the optimized MCP server
+bun start:mcp
+
+# Development mode with auto-reload
+bun dev:mcp
+
+# With custom environment variables
+PORT=3002 HOST=127.0.0.1 bun start:mcp
+```
 
 ### Example: Using the MCP Server in Cursor
 
@@ -463,6 +502,7 @@ mcp-evm-server/
 │   ├── index.ts                # Main stdio server entry point
 │   ├── server/                 # Server-related files
 │   │   ├── http-server.ts      # HTTP server with SSE
+│   │   ├── mcp-server.ts       # Optimized MCP HTTP server
 │   │   └── server.ts           # General server setup
 │   ├── core/
 │   │   ├── chains.ts           # Chain definitions and utilities
@@ -492,7 +532,26 @@ To modify or extend the server:
 2. Register new tools in `src/core/tools.ts`
 3. Register new resources in `src/core/resources.ts`
 4. Add new network support in `src/core/chains.ts`
-5. To change server configuration, edit the hardcoded values in `src/server/http-server.ts`
+5. To change server configuration, edit the hardcoded values in `src/server/http-server.ts` or `src/server/mcp-server.ts`
+
+### Available Scripts
+
+```bash
+# Development
+bun dev              # STDIO server with auto-reload
+bun dev:http         # HTTP server with auto-reload
+bun dev:mcp          # Optimized MCP server with auto-reload
+
+# Production
+bun start            # STDIO server
+bun start:http       # HTTP server
+bun start:mcp        # Optimized MCP server
+
+# Build
+bun build            # Build STDIO server
+bun build:http       # Build HTTP server
+bun build:mcp        # Build optimized MCP server
+```
 
 ## 📄 License
 
