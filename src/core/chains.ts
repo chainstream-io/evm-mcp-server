@@ -98,6 +98,50 @@ export const chainMap: Record<number, Chain> = {
   1313161554: aurora,
   7700: canto,
   747: flowMainnet,
+  8911: {
+    id: 8911,
+    name: 'Algen',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'ALG',
+      symbol: 'ALG',
+    },
+    rpcUrls: {
+      default: { http: ['https://rpc.algen.network'] },
+      public: { http: ['https://rpc.algen.network'] },
+    },
+    blockExplorers: {
+      default: { name: 'Algen Explorer', url: 'https://explorer.algen.network' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 1,
+      },
+    },
+  } as Chain,
+  8921: {
+    id: 8921,
+    name: 'Algen Layer2',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'ALG',
+      symbol: 'ALG',
+    },
+    rpcUrls: {
+      default: { http: ['https://rpc.alg2.algen.network'] },
+      public: { http: ['https://rpc.alg2.algen.network'] },
+    },
+    blockExplorers: {
+      default: { name: 'Algen L2 Explorer', url: 'https://explorer.alg2.algen.network' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 1,
+      },
+    },
+  } as Chain,
   
   // Testnets
   11155111: sepolia,
@@ -109,10 +153,10 @@ export const chainMap: Record<number, Chain> = {
   97: bscTestnet,
   300: zksyncSepoliaTestnet,
   59141: lineaSepolia,
-  1952959480: lumiaTestnet,
   534351: scrollSepolia,
   5003: mantleSepoliaTestnet,
   3441006: mantaSepoliaTestnet,
+  1952959480: lumiaTestnet,
   168587773: blastSepolia,
   2522: fraxtalTestnet,
   919: modeTestnet,
@@ -172,6 +216,15 @@ export const networkNameMap: Record<string, number> = {
   'aurora': 1313161554,
   'canto': 7700,
   'flow': 747,
+  // ALGEN
+  'alg': 8911,
+  'algen': 8911,
+  'algen-l1': 8911,
+  'algenl1': 8911,
+  // ALGEN Layer2
+  'algen-l2': 8921,
+  'algenl2': 8921,
+  'algen-layer2': 8921,
   
   // Testnets
   'sepolia': 11155111,
@@ -254,6 +307,8 @@ export const rpcUrlMap: Record<number, string> = {
   1313161554: 'https://mainnet.aurora.dev',
   7700: 'https://canto.gravitychain.io',
   747: 'https://mainnet.evm.nodes.onflow.org',
+  8911: 'https://rpc.algen.network',
+  8921: 'https://rpc.alg2.algen.network',
   
   // Testnets
   11155111: 'https://sepolia.drpc.org',

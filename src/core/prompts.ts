@@ -3,6 +3,13 @@ import { z } from "zod";
 
 /**
  * Register all EVM-related prompts with the MCP server
+ * 
+ * Supported networks include:
+ * - Ethereum, Optimism, Arbitrum, Base, Polygon, Avalanche, BSC, zkSync, Linea, Celo, Gnosis, Fantom, Filecoin, Moonbeam, Moonriver, Cronos, Scroll, Mantle, Manta, Lumia, Blast, Fraxtal, Mode, Metis, Kroma, Zora, Aurora, Canto, Flow
+ * - Algen (8911) - Algen mainnet
+ * - Algen Layer2 (8921) - Algen Layer2 network
+ * - All major testnets (Sepolia, Goerli, Holesky, etc.)
+ * 
  * @param server The MCP server instance
  */
 export function registerEVMPrompts(server: McpServer) {
@@ -12,7 +19,7 @@ export function registerEVMPrompts(server: McpServer) {
     "Explore information about a specific block",
     {
       blockNumber: z.string().optional().describe("Block number to explore. If not provided, latest block will be used."),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     ({ blockNumber, network = "ethereum" }) => ({
       messages: [{
@@ -33,7 +40,7 @@ export function registerEVMPrompts(server: McpServer) {
     "Analyze a specific transaction",
     {
       txHash: z.string().describe("Transaction hash to analyze"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     ({ txHash, network = "ethereum" }) => ({
       messages: [{
@@ -52,7 +59,7 @@ export function registerEVMPrompts(server: McpServer) {
     "Analyze an EVM address",
     {
       address: z.string().describe("Ethereum address to analyze"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     ({ address, network = "ethereum" }) => ({
       messages: [{
@@ -134,7 +141,7 @@ export function registerEVMPrompts(server: McpServer) {
       tokenAddress: z.string().describe("Token contract address to analyze"),
       tokenType: z.string().optional().describe("Type of token to analyze (erc20, erc721/nft, or auto-detect). Defaults to auto."),
       tokenId: z.string().optional().describe("Token ID (required for NFT analysis)"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     ({ tokenAddress, tokenType = "auto", tokenId, network = "ethereum" }) => {
       let promptText = "";

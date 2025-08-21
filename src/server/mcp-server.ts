@@ -205,7 +205,7 @@ app.post("/mcp", async (req: Request, res: Response) => {
                     },
                     network: { 
                       type: "string",
-                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.)"
+                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.)"
                     }
                   },
                   required: ["address"]
@@ -219,7 +219,7 @@ app.post("/mcp", async (req: Request, res: Response) => {
                   properties: {
                     network: { 
                       type: "string",
-                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.)"
+                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.)"
                     }
                   }
                 }
@@ -240,7 +240,7 @@ app.post("/mcp", async (req: Request, res: Response) => {
                   properties: {
                     network: { 
                       type: "string",
-                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.)"
+                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.)"
                     }
                   }
                 }
@@ -257,7 +257,7 @@ app.post("/mcp", async (req: Request, res: Response) => {
                     },
                     network: { 
                       type: "string",
-                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.)"
+                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.)"
                     }
                   },
                   required: ["ensName"]
@@ -283,7 +283,7 @@ app.post("/mcp", async (req: Request, res: Response) => {
                     },
                     network: { 
                       type: "string",
-                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.)"
+                      description: "Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.)"
                     }
                   },
                   required: ["privateKey", "to", "amount"]

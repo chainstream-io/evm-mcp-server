@@ -21,7 +21,7 @@ export function registerEVMTools(server: McpServer) {
     "get_chain_info",
     "Get information about an EVM network",
     {
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ network = "ethereum" }) => {
       try {
@@ -60,7 +60,7 @@ export function registerEVMTools(server: McpServer) {
     "Resolve an ENS name to an Ethereum address",
     {
       ensName: z.string().describe("ENS name to resolve (e.g., 'vitalik.eth')"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. ENS resolution works best on Ethereum mainnet. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. ENS resolution works best on Ethereum mainnet. Defaults to Ethereum mainnet.")
     },
     async ({ ensName, network = "ethereum" }) => {
       try {
@@ -202,7 +202,7 @@ export function registerEVMTools(server: McpServer) {
     "Get the native token balance (ETH, MATIC, etc.) for an address", 
     {
       address: z.string().describe("The wallet address or ENS name (e.g., '0x1234...' or 'vitalik.eth') to check the balance for"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ address, network = "ethereum" }) => {
       try {
@@ -282,7 +282,7 @@ export function registerEVMTools(server: McpServer) {
     {
       tokenAddress: z.string().describe("The contract address or ENS name of the ERC20 token (e.g., '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48' for USDC or 'uniswap.eth')"),
       ownerAddress: z.string().describe("The wallet address or ENS name to check the balance for (e.g., '0x1234...' or 'vitalik.eth')"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ tokenAddress, ownerAddress, network = "ethereum" }) => {
       try {
@@ -322,7 +322,7 @@ export function registerEVMTools(server: McpServer) {
     "Get detailed information about a specific transaction by its hash. Includes sender, recipient, value, data, and more.",
     {
       txHash: z.string().describe("The transaction hash to look up (e.g., '0x1234...')"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'polygon') or chain ID. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'polygon', 'algen', 'algen-l2') or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ txHash, network = "ethereum" }) => {
       try {
@@ -431,7 +431,7 @@ export function registerEVMTools(server: McpServer) {
       privateKey: z.string().describe("Private key of the sender account in hex format (with or without 0x prefix). SECURITY: This is used only for transaction signing and is not stored."),
       to: z.string().describe("The recipient address or ENS name (e.g., '0x1234...' or 'vitalik.eth')"),
       amount: z.string().describe("Amount to send in ETH (or the native token of the network), as a string (e.g., '0.1')"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ privateKey, to, amount, network = "ethereum" }) => {
       try {
@@ -470,7 +470,7 @@ export function registerEVMTools(server: McpServer) {
       tokenAddress: z.string().describe("The address of the ERC20 token contract"),
       toAddress: z.string().describe("The recipient address"),
       amount: z.string().describe("The amount of tokens to send (in token units, e.g., '10' for 10 tokens)"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ privateKey, tokenAddress, toAddress, amount, network = "ethereum" }) => {
       try {
@@ -681,7 +681,7 @@ export function registerEVMTools(server: McpServer) {
       tokenAddress: z.string().describe("The contract address or ENS name of the ERC20 token to transfer (e.g., '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48' for USDC or 'uniswap.eth')"),
       toAddress: z.string().describe("The recipient address or ENS name that will receive the tokens (e.g., '0x1234...' or 'vitalik.eth')"),
       amount: z.string().describe("Amount of tokens to send as a string (e.g., '100' for 100 tokens). This will be adjusted for the token's decimals."),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ privateKey, tokenAddress, toAddress, amount, network = "ethereum" }) => {
       try {
@@ -822,7 +822,7 @@ export function registerEVMTools(server: McpServer) {
     "Check if an address is a smart contract or an externally owned account (EOA)",
     {
       address: z.string().describe("The wallet or contract address or ENS name to check (e.g., '0x1234...' or 'uniswap.eth')"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ address, network = "ethereum" }) => {
       try {
@@ -998,7 +998,7 @@ export function registerEVMTools(server: McpServer) {
       tokenAddress: z.string().describe("The contract address or ENS name of the NFT collection (e.g., '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' for BAYC or 'boredapeyachtclub.eth')"),
       tokenId: z.string().describe("The ID of the NFT to check (e.g., '1234')"),
       ownerAddress: z.string().describe("The wallet address or ENS name to check ownership against (e.g., '0x1234...' or 'vitalik.eth')"),
-      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', etc.) or chain ID. Supports all EVM-compatible networks. Defaults to Ethereum mainnet.")
+      network: z.string().optional().describe("Network name (e.g., 'ethereum', 'optimism', 'arbitrum', 'base', 'algen', 'algen-l2', etc.) or chain ID. Supports all EVM-compatible networks including Algen (8911) and Algen Layer2 (8921). Defaults to Ethereum mainnet.")
     },
     async ({ tokenAddress, tokenId, ownerAddress, network = "ethereum" }) => {
       try {

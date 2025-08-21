@@ -1,7 +1,7 @@
 # EVM MCP Server
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![EVM Networks](https://img.shields.io/badge/Networks-30+-green)
+![EVM Networks](https://img.shields.io/badge/Networks-32+-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6)
 ![Viem](https://img.shields.io/badge/Viem-1.0+-green)
 
@@ -32,16 +32,16 @@ The MCP EVM Server leverages the Model Context Protocol to provide blockchain se
 - Interacting with smart contracts
 - Transferring tokens (native, ERC20, ERC721, ERC1155)
 - Querying token metadata and balances
-- Chain-specific services across 30+ EVM networks
+- Chain-specific services across 32+ EVM networks
 - **ENS name resolution** for all address parameters (use human-readable names like 'vitalik.eth' instead of addresses)
 
-All services are exposed through a consistent interface of MCP tools and resources, making it easy for AI agents to discover and use blockchain functionality. **Every tool that accepts Ethereum addresses also supports ENS names**, automatically resolving them to addresses behind the scenes.
+All services are exposed through a consistent interface of MCP tools and resources, making it easy for AI agents to discover and use blockchain functionality. **Every tool that accepts Ethereum addresses also supports ENS names**, automatically resolving them to addresses behind the scenes. The server includes specialized support for emerging networks like **Algen** and **Algen Layer2**, providing comprehensive blockchain services across both established and innovative EVM ecosystems.
 
 ## ✨ Features
 
 ### Blockchain Data Access
 
-- **Multi-chain support** for 30+ EVM-compatible networks
+- **Multi-chain support** for 32+ EVM-compatible networks
 - **Chain information** including blockNumber, chainId, and RPCs
 - **Block data** access by number, hash, or latest
 - **Transaction details** and receipts with decoded logs
@@ -115,6 +115,8 @@ All services are exposed through a consistent interface of MCP tools and resourc
 - Canto
 - Flow
 - Lumia
+- **Algen** (ALG) - Algen mainnet with native ALG token support
+- **Algen Layer2** (ALG) - Algen Layer2 network for enhanced scalability
 
 ### Testnets
 - Sepolia
@@ -531,7 +533,7 @@ To modify or extend the server:
 1. Add new services in the appropriate file under `src/core/services/`
 2. Register new tools in `src/core/tools.ts`
 3. Register new resources in `src/core/resources.ts`
-4. Add new network support in `src/core/chains.ts`
+4. Add new network support in `src/core/chains.ts` (currently supports 32+ networks including Algen and Algen Layer2)
 5. To change server configuration, edit the hardcoded values in `src/server/http-server.ts` or `src/server/mcp-server.ts`
 
 ### Available Scripts
